@@ -1,4 +1,4 @@
-learn-python
+Learn Python
 ============
 
-Watch as I learn Python!
+Watch as I learn Python! Or don't. Whatever.
