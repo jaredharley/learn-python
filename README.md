@@ -11,7 +11,7 @@ As of the beginning of the year, there are two versions of Python available for 
 
 Since I wanted the latest and greatest, I built 3.4.2 from source [following these directions][2] (twice, actually, because my fingers typed `/user/` when my brain thought `/usr/`).
 
-I also had to add the new python directory to the `PATH` environment variable, like so: `PATH="$PATH:/usr/local/opt/python-3.4.2/bin"`.
+I also had to add the new python directory to the `PATH` environment variable in my `.bashrc` file, like so: `export PATH="$PATH:/usr/local/opt/python-3.4.2/bin"`.
 
   [1]: http://python.org
   [2]: http://www.extellisys.com/articles/python-on-debian-wheezy
