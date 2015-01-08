@@ -11,15 +11,13 @@
             <caption>Poll results</caption>
             <thead>
                 <tr>
-                    <th>Option</th>
-                    <th>Selection text</th>
+                    <th>Answer</th>
                     <th>Vote count</th>
                 </tr>
             </thead>
             <tbody>
                 {% for choice in question.choice_set.all %}
                 <tr>
-                    <td>{{ choice.id }}</td>
                     <td>{{ choice.choice_text }}</td>
                     <td>{{ choice.votes }} vote{{ choice.votes|pluralize }}</td>
                 </tr>
@@ -27,7 +25,7 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <th colspan=2>
+                    <th>
                         Total votes
                     </th>
                     <th>
