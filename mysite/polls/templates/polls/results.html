@@ -1,12 +1,45 @@
-<h1>{{ question.question_text }}</h1>
+{% extends "polls/base.html" %}
 
-<ul>
-{% for choice in question.choice_set.all %}
-    <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
-{% endfor %}
-</ul>
+{% block title %}Poll {{ question.id }} results{% endblock %}
 
-<a href="{% url 'polls:detail' question.id %}">Vote again?</a>
-<p>
-<a href="{% url 'polls:index' %}">Return to the list of polls</a>
-</p>
+{% block content %}
+<div class="row">
+    <div class="col-md-8">
+        {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+        <h2>{{ question.question_text }}</h2>
+        <table class="table table-hover">
+            <caption>Poll results</caption>
+            <thead>
+                <tr>
+                    <th>Option</th>
+                    <th>Selection text</th>
+                    <th>Vote count</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for choice in question.choice_set.all %}
+                <tr>
+                    <td>{{ choice.id }}</td>
+                    <td>{{ choice.choice_text }}</td>
+                    <td>{{ choice.votes }} vote{{ choice.votes|pluralize }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th colspan=2>
+                        Total votes
+                    </th>
+                    <th>
+                        {{ total_votes.votes__sum }} vote{{ total_votes.votes__sum|pluralize }}
+                    </th>
+                </tr>
+            </tfoot>
+        </table>
+        <p>
+            <a class="btn btn-success" href="{% url 'polls:detail' question.id %}">Vote again</a>
+            <a class="btn btn-info" href="{% url 'polls:index' %}">Return to the list of polls</a>
+        </p>
+    </div>
+</div>
+{% endblock %}

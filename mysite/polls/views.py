@@ -1,5 +1,6 @@
 from django.core.urlresolvers import reverse
-from django.http import HttpResponseRedirect
+from django.db.models import Sum
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from django.utils import timezone
 from django.views import generic
@@ -29,11 +30,16 @@ class DetailView(generic.DetailView):
         return Question.objects.filter(
             pub_date__lte=timezone.now())
 
-class ResultsView(generic.DetailView):
-    model = Question
-    template_name = 'polls/results.html'
+##class ResultsView(View):
+##    model = Question
+##    template_name = 'polls/results.html'
 
-
+def results(request, question_id):
+    question = get_object_or_404(Question, pk=question_id)
+    total_votes = question.choice_set.aggregate(Sum('votes'))
+    return render(request, 'polls/results.html', {'question': question,
+                                                  'total_votes': total_votes,})
+    
 def vote(request, question_id):
     p = get_object_or_404(Question, pk=question_id)
     try:
