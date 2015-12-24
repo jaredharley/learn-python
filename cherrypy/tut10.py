@@ -56,25 +56,9 @@ def cleanup_database():
 
 
 if __name__ == '__main__':
-	conf = {
-		'/': {
-			'tools.sessions.on': True,
-			'tools.staticdir.root': os.path.abspath(os.getcwd()),
-		},
-		'/generator': {
-			'request.dispatch': cherrypy.dispatch.MethodDispatcher(),
-			'tools.response_headers.on': True,
-			'tools.response_headers.headers': [('Content-Type', 'text/plain')],
-		},
-		'/static': {
-			'tools.staticdir.on': True,
-			'tools.staticdir.dir': './public',
-		},
-	}
-
 	cherrypy.engine.subscribe('start', setup_database)
 	cherrypy.engine.subscribe('stop', cleanup_database)
 
 	webapp = StringGenerator()
 	webapp.generator = StringGeneratorWebService()
-	cherrypy.quickstart(webapp, '/', conf)
+	cherrypy.quickstart(webapp, '/', "tut-app.conf")
