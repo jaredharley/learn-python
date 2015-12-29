@@ -1,0 +1,13 @@
+<!-- extend from base layout -->
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+	<div class="col-md-8">
+		<h2>404</h2>
+		<hr/>
+		<p>We couldn't find the page you were looking for.</p>
+		<p><a href="{{ url_for('index') }}">Back to the beginning</a></p>
+	</div>
+</div>
+{% endblock %}
