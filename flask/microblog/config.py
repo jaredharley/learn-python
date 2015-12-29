@@ -8,17 +8,13 @@ SQLALCHEMY_MIGRATE_REPO = os.path.join(basedir, 'db_repository')
 WTF_CSRF_ENABLED = True
 SECRET_KEY = 'this-is-a-secret'
 
-OPENID_PROVIDERS = [
-    {'name': 'Google', 'url': 'https://www.google.com/accounts/o8/id'},
-    {'name': 'Yahoo', 'url': 'https://me.yahoo.com'},
-    {'name': 'AOL', 'url': 'http://openid.aol.com/<username>'},
-    {'name': 'Flickr', 'url': 'http://www.flickr.com/<username>'},
-    {'name': 'MyOpenID', 'url': 'https://www.myopenid.com'}]
-
-OAUTH_CREDENTIALS = [
-	{'twitter': {
-		'id': 'YLEYxzqfC8OqY4QMWeVEysNDx',
-		'secret': '85Y7LvrZhbigiM6rMOx0iXYsYzl97nEAip7opdYpsZ88okcIo6'
-		}
-	}
-]
+OAUTH_CREDENTIALS = {
+    'facebook': {
+        'id': '1234567',
+        'secret': '12345678901234567890'
+    },
+    'twitter': {
+        'id': 'YLEYxzqfC8OqY4QMWeVEysNDx',
+        'secret': '85Y7LvrZhbigiM6rMOx0iXYsYzl97nEAip7opdYpsZ88okcIo6'
+    }
+}
