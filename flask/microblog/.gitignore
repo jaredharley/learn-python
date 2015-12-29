@@ -3,3 +3,6 @@ flask/
 
 # Ignore database file
 app.db
+
+# Ignore temp directory
+tmp/

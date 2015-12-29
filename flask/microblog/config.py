@@ -14,3 +14,11 @@ OPENID_PROVIDERS = [
     {'name': 'AOL', 'url': 'http://openid.aol.com/<username>'},
     {'name': 'Flickr', 'url': 'http://www.flickr.com/<username>'},
     {'name': 'MyOpenID', 'url': 'https://www.myopenid.com'}]
+
+OAUTH_CREDENTIALS = [
+	{'twitter': {
+		'id': 'YLEYxzqfC8OqY4QMWeVEysNDx',
+		'secret': '85Y7LvrZhbigiM6rMOx0iXYsYzl97nEAip7opdYpsZ88okcIo6'
+		}
+	}
+]
