@@ -1,5 +1,5 @@
 <p class="well">
-	<img src="{{ user.avatar(48) }}" class="pull-left" style="margin-right: 10px;">
-	<strong><a href="{{ url_for('user', nickname=g.user.nickname) }}">{{ post.author.nickname }}</a></strong><br/>
+	<img src="{{ post.author.avatar(48) }}" class="pull-left" style="margin-right: 10px;">
+	<strong><a href="{{ url_for('user', nickname=post.author.nickname) }}">{{ post.author.nickname }}</a></strong><br/>
 	{{ post.body }}
 </p>

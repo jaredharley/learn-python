@@ -1,9 +1,28 @@
 {% extends "base.html" %}
 {% block content %}
-	<div class="row">
-	<h1>Hello, {{ user.nickname }}</h1>
-	{% for post in posts %}
-	<div><p><strong>{{ post.author.nickname }}</strong><br/>{{ post.body }}</p></div>
-	{% endfor %}
+<div class="row">
+	<div class="col-md-4">
+		<img src="{{ g.user.avatar(128) }}"><br/>
+		<h2>Hello, {{ g.user.nickname }}</h2>
+		<form action="" method="POST" name="post">
+			{{ form.hidden_tag() }}
+			<div class="form-group">
+				<label for="">What's on your mind?</label>
+				{{ form.post(size=30, maxlength=140) }}
+			</div>
+				<button type="submit" class="btn btn-sm btn-primary">Post</button>
+		</form>
 	</div>
+	<div class="col-md-8">
+		{% for post in posts.items %}
+			{% include 'post.html' %}
+		{% endfor %}
+		<nav>
+			<ul class="pager">
+				<li>{% if posts.has_prev %}<a href="{{ url_for('index', page=posts.prev_num) }}"><span aria-hidden="true">&larr;</span> Newer posts</a>{% endif %}</li>
+				<li>{% if posts.has_next %}<a href="{{ url_for('index', page=posts.next_num) }}">Older posts <span aria-hidden="true">&rarr;</span></a>{% endif %}</li>
+			</ul>
+		</nav>
+	</div>
+</div>
 {% endblock %}

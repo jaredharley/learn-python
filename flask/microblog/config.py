@@ -28,3 +28,6 @@ MAIL_PASSWORD = None
 
 # Admin list
 ADMINS = ['jared@jaredharley.com']
+
+# Pagination
+POSTS_PER_PAGE = 3
