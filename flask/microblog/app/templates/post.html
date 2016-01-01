@@ -1,5 +1,5 @@
-<p class="well">
+<div class="well">
 	<img src="{{ post.author.avatar(48) }}" class="pull-left" style="margin-right: 10px;">
-	<strong><a href="{{ url_for('user', nickname=post.author.nickname) }}">{{ post.author.nickname }}</a></strong><br/>
-	{{ post.body }}
-</p>
+	<p><strong><a href="{{ url_for('user', nickname=post.author.nickname) }}">{{ post.author.nickname }}</a></strong> <span class="pull-right post-timestamp">{{ momentjs(post.timestamp).fromNow() }}</span><br/>
+	{{ post.body }}</p>
+</div>
