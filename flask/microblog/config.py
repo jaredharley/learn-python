@@ -11,20 +11,22 @@ SECRET_KEY = 'this-is-a-secret'
 
 OAUTH_CREDENTIALS = {
     'facebook': {
-        'id': '1234567',
-        'secret': '12345678901234567890'
+        'id': os.environ.get('FACEBOOK_ID'),
+        'secret': os.environ.get('FACEBOOK_SECRET')
     },
     'twitter': {
-        'id': 'YLEYxzqfC8OqY4QMWeVEysNDx',
-        'secret': '85Y7LvrZhbigiM6rMOx0iXYsYzl97nEAip7opdYpsZ88okcIo6'
+        'id': os.environ.get('TWITTER_ID'),
+        'secret': os.environ.get('TWITTER_SECRET')
     }
 }
 
 # Mail server settings
-MAIL_SERVER = 'localhost'
-MAIL_PORT = 25
-MAIL_USERNAME = None
-MAIL_PASSWORD = None
+MAIL_SERVER = 'mail.messagingengine.com'
+MAIL_PORT = 465
+MAIL_USE_TLS = False
+MAIL_USE_SSL = True
+MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
+MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
 
 # Admin list
 ADMINS = ['jared@jaredharley.com']

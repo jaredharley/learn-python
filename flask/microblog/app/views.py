@@ -1,8 +1,9 @@
 from flask import render_template, flash, redirect, session, url_for, request, g
 from flask.ext.login import login_user, logout_user, current_user, login_required
 from app import app, db, lm
-from forms import EditForm, PostForm
-from models import User, Post
+from .forms import EditForm, PostForm
+from .models import User, Post
+from .emails import follower_notification
 from oauth import OAuthSignIn
 from config import POSTS_PER_PAGE
 from datetime import datetime
@@ -128,6 +129,7 @@ def follow(nickname):
 	db.session.add(u)
 	db.session.commit()
 	flash('You are now following ' + nickname + '!')
+	follower_notification(user, g.user)
 	return redirect(url_for('user', nickname=nickname))
 
 @app.route('/unfollow/<nickname>')

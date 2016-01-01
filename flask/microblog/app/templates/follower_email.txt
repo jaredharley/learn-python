@@ -1,0 +1,8 @@
+Hey {{ user.nickname }}:
+
+{{ follower.nickname }} just started following you on [microblog]! Check out {{ follower.nickname }}'s profile:
+
+{{ url_for('user', nickname=follower.nickname, _external=True) }}
+
+Thanks!
+THE MANAGEMENT
