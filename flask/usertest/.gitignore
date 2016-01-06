@@ -1,0 +1,8 @@
+# Ignore Flask virtualenv folder
+flask/
+
+# Ignore database file
+app.db
+
+# Ignore temp directory
+tmp/
